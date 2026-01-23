@@ -1,4 +1,4 @@
-package com.framework.playwright.steps;
+/*package com.framework.playwright.steps;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -100,3 +100,4 @@ public class BiampWorkplace {
 
     }
 }
+*/

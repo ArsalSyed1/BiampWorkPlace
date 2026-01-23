@@ -4,7 +4,6 @@ import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.options.Cookie;
 import com.microsoft.playwright.options.SameSiteAttribute;
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import java.util.List;
 
 import static com.microsoft.playwright.options.WaitForSelectorState.VISIBLE;
 
-public class biampWorkplaceAutomation {
+public class BWPLoginTest {
 
     Playwright playwright = Playwright.create();
     Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
