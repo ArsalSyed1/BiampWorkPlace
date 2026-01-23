@@ -70,7 +70,7 @@ public class BWPLoginTest {
 
         context.tracing().stop(
                 new Tracing.StopOptions()
-                        .setPath(Paths.get("trace-"+traceName+".zip")) // Will save with display name of test
+                        .setPath(Paths.get("target/playwright-traces/" + "trace-"+traceName+".zip")) // Will save with display name of test
         );
 
         context.close();
