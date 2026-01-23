@@ -14,7 +14,7 @@ import static com.microsoft.playwright.options.WaitForSelectorState.VISIBLE;
 public class BWPLoginTest {
 
     Playwright playwright = Playwright.create();
-    Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+    Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
     BrowserContext context = browser.newContext();
     Page page = context.newPage();
 
