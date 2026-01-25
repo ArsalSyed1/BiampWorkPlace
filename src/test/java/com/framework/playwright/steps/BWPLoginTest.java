@@ -1,83 +1,32 @@
 package com.framework.playwright.steps;
 
+import com.framework.playwright.base.BaseTest;
+import com.framework.playwright.pages.loginPage;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
-import com.microsoft.playwright.options.Cookie;
-import com.microsoft.playwright.options.SameSiteAttribute;
 import org.junit.jupiter.api.*;
 
-import java.nio.file.Paths;
-import java.util.List;
-
+import static com.microsoft.playwright.options.WaitForSelectorState.HIDDEN;
 import static com.microsoft.playwright.options.WaitForSelectorState.VISIBLE;
-
-public class BWPLoginTest {
-
-
-    Playwright playwright;
-    Browser browser;
-    BrowserContext context;
-    Page page;
-
-    Cookie vercelCookie = new Cookie("_vercel_jwt", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwYXNzd29yZC1wcm90ZWN0aW9uIiwiaGFzaCI6IjI3Zjc4ODM4MmNhZTAyNjk0YzU5YzRjNjFmYjNjYzU2YmRlZjQxMzBkZTZhYjk5ODFmYjIzYmFlYjM5YzcyOWEiLCJhdWQiOiJzdGFnZS53b3JrcGxhY2UuYmlhbXAuYXBwIiwiaWF0IjoxNzY5MDc4Mjg3fQ.LbiyOhjRsQZOtHWzrTHIMQ1WT92ZRFew0R-yQju4Dqw")
-            .setDomain("stage.workplace.biamp.app")
-            .setPath("/")
-            .setHttpOnly(true)
-            .setSecure(true)
-            .setSameSite(SameSiteAttribute.LAX);
-
-    @BeforeEach
-    void setupTrace(){
-
-        playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
-        context = browser.newContext();
-        context.addCookies(List.of(vercelCookie));
-        context.tracing().start(
-                new Tracing.StartOptions()
-                        .setScreenshots(true)
-                        .setSnapshots(true)
-                        .setSources(true) );
-        page = context.newPage();
-    }
-
-
+public class BWPLoginTest extends BaseTest {
 
     @Test
     void login() throws InterruptedException {
-        // context.addCookies(List.of(vercelCookie));
-        page.navigate("https://stage.workplace.biamp.app");
-        page.getByText("Sign in or Register").click();
-        page.locator("#loginName").fill("arsal.syed@biamp.com");
-        page.locator("#submit-button").click();
-        page.getByPlaceholder("Password").fill("nustseecs@2K13");
-        page.locator("#idSIButton9").click();
+        loginPage loginobj = new loginPage(page);
+        loginobj.navigateTo("https://stage.workplace.biamp.app");
+        loginobj.login("arsal.syed@biamp.com", "nustseecs@2K13");
+
         page.getByText("Impera Corporation").click();
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Devices")).click();
-        page.locator("input[type='search']").fill("237401742");
         page.locator("tr[role='button']").nth(0).waitFor(new Locator.WaitForOptions().setState(VISIBLE));
+        page.locator("button[aria-label='Search...']").click();
+        page.getByRole(AriaRole.TEXTBOX).fill("237401742");
+        Thread.sleep(2000);
+        page.locator("tr[role='button']").nth(0).waitFor(new Locator.WaitForOptions().setState(VISIBLE));
+        page.locator("tr[role='button']").nth(20).waitFor(new Locator.WaitForOptions().setState(HIDDEN));
         int count = page.locator("tr[role='button']").count();
         System.out.println(count);
         Assertions.assertEquals(1, count);
     }
-
-
-    @AfterEach
-    void recordTraces(TestInfo testInfo){
-
-        String traceName = testInfo.getDisplayName().replace(" ", "-") .replaceAll("[\\\\/:*?\"<>|()]", "") // remove illegal Windows chars
-                .toLowerCase();
-
-        context.tracing().stop(
-                new Tracing.StopOptions()
-                        .setPath(Paths.get("target/playwright-traces/" + "traces-"+traceName+".zip")) // Will save with display name of test
-        );
-
-        context.close();
-        browser.close();
-        playwright.close();
-    }
-
-
 
 }
