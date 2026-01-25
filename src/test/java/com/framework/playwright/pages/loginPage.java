@@ -21,11 +21,12 @@ public class loginPage extends BasePage {
         this.loginButton= page.locator("#idSIButton9");
     }
 
-    public void login(String user, String pass) {
+    public organizationPage login(String user, String pass) {
     signInCTA.click();
     username.fill(user);
     userSubmit.click();
     password.fill(pass);
     loginButton.click();
+    return new organizationPage(page);
     }
 }
