@@ -8,6 +8,7 @@ import com.framework.playwright.uiComponent.leftNavigation;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 import static com.framework.playwright.utilities.assertionUtils.*;
+import static com.framework.playwright.utilities.auth_sessionUtils.*;
 public class BWPLoginTest extends BaseTest {
 
     @Test
@@ -23,8 +24,9 @@ public class BWPLoginTest extends BaseTest {
 
         int devCount = device.searchDevice("237401742");
 
-        // Calling the Assertion Utils
+        // Calling the Assertion Utils methods
         assertEquals(1, devCount);
+        Thread.sleep(1000);
 
     }
 

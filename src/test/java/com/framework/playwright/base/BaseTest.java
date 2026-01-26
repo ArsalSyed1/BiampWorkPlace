@@ -27,7 +27,7 @@ public class BaseTest {
     @BeforeEach
     void setupTrace(){
                 playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
         context = browser.newContext();
         context.addCookies(List.of(vercelCookie));
         context.tracing().start(
@@ -46,7 +46,7 @@ public class BaseTest {
 
         context.tracing().stop(
                 new Tracing.StopOptions()
-                        .setPath(Paths.get("target/playwright-traces/" + "traces-"+traceName+".zip")) // Will save with display name of test
+                        .setPath(Paths.get("src/test/java/com/framework/playwright/artifacts/" + "traces-"+traceName+".zip")) // Will save with display name of test
         );
 
         context.close();
