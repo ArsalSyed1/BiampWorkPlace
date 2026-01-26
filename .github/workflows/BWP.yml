@@ -45,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-traces
-          path: target/playwright-traces
+          path: src/test/java/com/framework/playwright/artifacts
