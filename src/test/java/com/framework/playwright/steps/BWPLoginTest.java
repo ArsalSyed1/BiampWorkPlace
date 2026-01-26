@@ -9,9 +9,11 @@ import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 import static com.framework.playwright.utilities.assertionUtils.*;
 import static com.framework.playwright.utilities.auth_sessionUtils.*;
+
+
 public class BWPLoginTest extends BaseTest {
 
-    @Test
+    /*@Test
     void login() throws InterruptedException {
         loginPage loginObj = new loginPage(page);
         loginObj.navigateTo("https://stage.workplace.biamp.app");
@@ -27,6 +29,22 @@ public class BWPLoginTest extends BaseTest {
         // Calling the Assertion Utils methods
         assertEquals(1, devCount);
         Thread.sleep(1000);
+    }*/
+
+    @Test
+    void searchDevice() throws InterruptedException {
+        page.navigate("https://stage.workplace.biamp.app");
+        page.locator(".MuiButton-root").click();
+        organizationPage org = new organizationPage(page);
+        org.selectOrganization();
+
+        leftNavigation leftNav =  new leftNavigation(page);
+        devicesPage device = leftNav.gotoDevices();
+
+        int devCount = device.searchDevice("237401742");
+
+        // Calling the Assertion Utils methods
+        assertEquals(1, devCount);
     }
 
 }

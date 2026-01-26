@@ -1,7 +1,6 @@
-/*package com.framework.playwright.steps;
+package com.framework.playwright.steps;
 
 import com.framework.playwright.pages.loginPage;
-import com.framework.playwright.pages.organizationPage;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.Test;
 
@@ -51,4 +50,4 @@ public class BWPLoginAuth {
 
     }
 
-}*/
+}
