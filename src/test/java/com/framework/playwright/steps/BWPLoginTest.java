@@ -26,7 +26,7 @@ public class BWPLoginTest extends BaseTest {
 
         // Calling the Assertion Utils methods
         assertEquals(1, devCount);
-
+        Thread.sleep(1000);
     }
 
 }
