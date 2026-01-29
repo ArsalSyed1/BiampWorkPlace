@@ -1,5 +1,5 @@
 package biamp.framework.biampworkplace.base;
-
+import biamp.framework.biampworkplace.pages.signInPage;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Cookie;
 import com.microsoft.playwright.options.SameSiteAttribute;
@@ -9,15 +9,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 
 import java.nio.file.Paths;
+import java.util.List;
 
 import static com.framework.playwright.utilities.auth_sessionUtils.reuseSession;
+import static com.framework.playwright.utilities.auth_sessionUtils.saveStorageState;
 
 public class baseTest {
 
     protected static Playwright playwright;
     protected static Browser browser;
     protected static BrowserContext context;
-    protected Page page;
+    protected static Page page;
 
     static Cookie vercelCookie = new Cookie("_vercel_jwt", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwYXNzd29yZC1wcm90ZWN0aW9uIiwiaGFzaCI6IjI3Zjc4ODM4MmNhZTAyNjk0YzU5YzRjNjFmYjNjYzU2YmRlZjQxMzBkZTZhYjk5ODFmYjIzYmFlYjM5YzcyOWEiLCJhdWQiOiJzdGFnZS53b3JrcGxhY2UuYmlhbXAuYXBwIiwiaWF0IjoxNzY5MDc4Mjg3fQ.LbiyOhjRsQZOtHWzrTHIMQ1WT92ZRFew0R-yQju4Dqw")
             .setDomain("stage.workplace.biamp.app")
@@ -26,13 +28,25 @@ public class baseTest {
             .setSecure(true)
             .setSameSite(SameSiteAttribute.LAX);
 
-    public baseTest(Page page) {
-        this.page = page;
-    }
-
     @BeforeAll
-    public static void setup() {
+    public static void setup() throws InterruptedException {
 
+        playwright= Playwright.create();
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        context = browser.newContext();
+        context.addCookies(List.of(vercelCookie));
+        page = context.newPage();
+
+        signInPage signInObj = new signInPage(page);
+        signInObj.navigateTo("https://stage.workplace.biamp.app");
+        signInObj.signIn("arsal.syed@biamp.com", "nustseecs@2K13");
+        Thread.sleep(2000);
+
+        saveStorageState(context);
+        page.close();
+        context.close();
+        browser.close();
+        playwright.close();
 
     }
 
@@ -65,6 +79,5 @@ public class baseTest {
         browser.close();
         playwright.close();
     }
-
 
 }

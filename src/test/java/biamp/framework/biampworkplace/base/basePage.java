@@ -1,13 +1,14 @@
 package biamp.framework.biampworkplace.base;
 
 import com.microsoft.playwright.Download;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 import java.nio.file.Paths;
 
 public class basePage {
 
-    private final Page page;
+    protected final Page page;
     // Constructor
     public basePage(Page page) {
         this.page = page;
@@ -18,45 +19,45 @@ public class basePage {
         page.navigate(url);
     }
 
-    public void click(String selector) {
-        page.locator(selector).click();
+    public void click(Locator locator) {
+        locator.click();
     }
 
-    public void type(String selector, String text) {
-        page.locator(selector).fill(text);
+    public void type(Locator locator, String text) {
+        locator.fill(text);
     }
 
-    public String getText(String selector) {
-        return page.locator(selector).innerText();
+    public String getText(Locator locator) {
+        return locator.innerText();
     }
 
-    public boolean isVisible(String selector) {
-        return page.locator(selector).isVisible();
+    public boolean isVisible(Locator locator) {
+        return locator.isVisible();
     }
 
-    public void hover(String selector) {
-        page.locator(selector).hover();
+    public void hover(Locator locator) {
+        locator.hover();
     }
 
-    public void doubleClick(String selector) {
-        page.locator(selector).dblclick();
+    public void doubleClick(Locator locator) {
+        locator.dblclick();
     }
 
-    public void selectOption(String selector, String value) {
-        page.locator(selector).selectOption(value);
+    public void selectOption(Locator locator, String value) {
+        locator.selectOption(value);
     }
 
-    public boolean containsText(String selector, String text) {
-        return page.locator(selector).innerText().contains(text);
+    public boolean containsText(Locator locator, String text) {
+        return locator.innerText().contains(text);
     }
 
-    public void clearField(String selector) {
-        page.locator(selector).fill("");
+    public void clearField(Locator locator) {
+        locator.fill("");
     }
 
     // Method to upload a file
-    public void uploadFile(String selector, String filePath) {
-        page.locator(selector).setInputFiles(Paths.get(filePath));
+    public void uploadFile(Locator locator, String filePath) {
+        locator.setInputFiles(Paths.get(filePath));
     }
 
     // Method to download a file
