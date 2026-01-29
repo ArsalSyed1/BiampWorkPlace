@@ -11,8 +11,8 @@ import org.junit.jupiter.api.TestInfo;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static com.framework.playwright.utilities.auth_sessionUtils.reuseSession;
-import static com.framework.playwright.utilities.auth_sessionUtils.saveStorageState;
+import static biamp.framework.biampworkplace.utilities.sessionUtilities.reuseSession;
+import static biamp.framework.biampworkplace.utilities.sessionUtilities.saveStorageState;
 
 public class baseTest {
 
@@ -28,11 +28,11 @@ public class baseTest {
             .setSecure(true)
             .setSameSite(SameSiteAttribute.LAX);
 
-    @BeforeAll
+    //@BeforeAll
     public static void setup() throws InterruptedException {
 
         playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
         context = browser.newContext();
         context.addCookies(List.of(vercelCookie));
         page = context.newPage();
@@ -50,7 +50,7 @@ public class baseTest {
 
     }
 
-    @BeforeEach
+    //@BeforeEach
     public void beforeEach() {
         playwright= Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
@@ -65,7 +65,7 @@ public class baseTest {
 
     }
 
-    @AfterEach
+  //  @AfterEach
     public void afterEach(TestInfo testInfo) {
         String traceName = testInfo.getDisplayName().replace(" ", "-") .replaceAll("[\\\\/:*?\"<>|()]", "") // remove illegal Windows chars
                 .toLowerCase();
