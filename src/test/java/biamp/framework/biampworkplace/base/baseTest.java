@@ -72,7 +72,7 @@ public class baseTest {
 
         context.tracing().stop(
                 new Tracing.StopOptions()
-                        .setPath(Paths.get("src/test/java/com/framework/playwright/artifacts/" + "traces-"+traceName+".zip")) // Will save with display name of test
+                        .setPath(Paths.get("src/test/java/biamp/framework/biampworkplace/artifacts/" + "traces-"+traceName+".zip")) // Will save with display name of test
         );
 
         context.close();

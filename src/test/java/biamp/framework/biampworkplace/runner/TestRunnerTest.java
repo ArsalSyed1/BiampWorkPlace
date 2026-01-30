@@ -13,7 +13,7 @@ import static io.cucumber.core.options.Constants.EXECUTION_DRY_RUN_PROPERTY_NAME
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "biamp.framework.biampworkplace.steps, biamp.framework.biampworkplace.hooks")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-report.html")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:src/test/java/biamp/framework/biampworkplace/artifacts/cucumber-report.html")
 @ConfigurationParameter(key = EXECUTION_DRY_RUN_PROPERTY_NAME, value = "false")
-public class testRunner {
+public class TestRunnerTest {
 }

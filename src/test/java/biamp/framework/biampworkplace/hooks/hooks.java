@@ -53,6 +53,7 @@ public class hooks extends baseTest {
             }
         };
         afterEach(testInfo);
+        System.out.println("After scenario: " + scenario.getName());
 
     }
 

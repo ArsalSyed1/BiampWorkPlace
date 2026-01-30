@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class sessionUtilities {
 
-    private static final Path STORAGE_STATE_PATH = Paths.get("biamp/framework/biampworkplace/artifacts/auth.json");
+    private static final Path STORAGE_STATE_PATH = Paths.get("src/test/java/biamp/framework/biampworkplace/artifacts/auth.json");
 
     public static void saveStorageState(BrowserContext context) {
         context.storageState(
