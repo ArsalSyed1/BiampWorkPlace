@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-public class BWP_Automation {
+public class BWP_AutomationTest {
 
     @Given("I am logged into Biamp Workplace Cloud")
     public void login() throws InterruptedException {

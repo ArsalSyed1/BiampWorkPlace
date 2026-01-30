@@ -6,11 +6,14 @@ import com.framework.playwright.pages.loginPage;
 import com.framework.playwright.pages.organizationPage;
 import com.framework.playwright.uiComponent.leftNavigation;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
+import com.microsoft.playwright.options.LoadState;
 import org.junit.jupiter.api.*;
 import static com.framework.playwright.utilities.assertionUtils.*;
 import static com.framework.playwright.utilities.auth_sessionUtils.*;
+import static com.microsoft.playwright.options.WaitForSelectorState.VISIBLE;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BWPLoginTest extends BaseTest {
 
     /*@Test
@@ -31,6 +34,18 @@ public class BWPLoginTest extends BaseTest {
         Thread.sleep(1000);
     }*/
 
+
+    @Order(99)
+    @Test
+    void verifySignOutFunctionality() throws InterruptedException {
+        page.navigate("https://stage.workplace.biamp.app");
+        page.locator(".MuiButton-root").click();
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign out")).waitFor(new Locator.WaitForOptions().setState(VISIBLE));
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign out")).click();
+        page.waitForLoadState(LoadState.NETWORKIDLE, new Page.WaitForLoadStateOptions().setTimeout(5000));
+        Assertions.assertTrue(page.getByText("Sign in or Register").isVisible(), "Sign out was not successful");
+    }
+    @Order(1)
     @Test
     void searchDevice() throws InterruptedException {
         page.navigate("https://stage.workplace.biamp.app");
@@ -45,6 +60,15 @@ public class BWPLoginTest extends BaseTest {
 
         // Calling the Assertion Utils methods
         assertEquals(1, devCount);
+    }
+
+    @Order(2)
+    @Test
+    void openDeviceDetails(){
+        page.navigate("https://stage.workplace.biamp.app/admin/imperacorporation/devices?page=0&limit=25&search=237401742");
+        page.locator("tr[role='button']").filter(new Locator.FilterOptions().setHasText("237401742")).click();
+        page.waitForLoadState(LoadState.NETWORKIDLE);
+        assertVisible(page.locator("div[role='dialog']").filter(new Locator.FilterOptions().setHasText("Device Impera Tango")));
     }
 
 }
