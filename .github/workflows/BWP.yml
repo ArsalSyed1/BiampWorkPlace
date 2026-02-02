@@ -35,14 +35,20 @@ jobs:
       - name: Install Playwright dependencies
         run: npx playwright install-deps
 
+#      # 5. Run tests
+#      - name: Run Playwright tests
+#        run: mvn verify
       # 5. Run tests
       - name: Run Playwright tests
-        run: mvn verify
+        env:
+          CI: true
+        run: mvn clean test -Dtest=TestRunner
 
       # 🔥 THIS is what keeps your traces
       - name: Upload Playwright traces
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-traces
-          path: src/test/java/com/framework/playwright/artifacts
+          name: playwright-traces, cucumber-report.html
+          path: src/test/java/biamp/framework/biampworkplace/artifacts
+
