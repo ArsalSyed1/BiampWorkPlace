@@ -16,34 +16,42 @@ public class basePage {
 
 
     public void navigateTo(String url) {
+
         page.navigate(url);
     }
 
     public void click(Locator locator) {
+
         locator.click();
     }
 
     public void type(Locator locator, String text) {
+
         locator.fill(text);
     }
 
     public String getText(Locator locator) {
+
         return locator.innerText();
     }
 
     public boolean isVisible(Locator locator) {
+
         return locator.isVisible();
     }
 
     public void hover(Locator locator) {
+
         locator.hover();
     }
 
     public void doubleClick(Locator locator) {
+
         locator.dblclick();
     }
 
     public void selectOption(Locator locator, String value) {
+
         locator.selectOption(value);
     }
 

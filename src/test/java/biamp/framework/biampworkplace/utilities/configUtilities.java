@@ -42,6 +42,14 @@ public class configUtilities {
                     : System.getProperty("password", // Gets password from Maven/Terminal
                     properties.getProperty("password")); // Gets password from the IDE Environment Variable
 
+//    public static final String PASSWORD =
+//            System.getProperty("password",
+//                    System.getenv().getOrDefault(
+//                            "APP_PASSWORD",
+//                            properties.getProperty("password")
+//                    )
+//            );
+
     public static final String STORAGE_STATE_PATH =
             System.getProperty("storageStatePath", properties.getProperty("storageStatePath", "biamp/framework/biampworkplace/artifacts/auth.json"));
 

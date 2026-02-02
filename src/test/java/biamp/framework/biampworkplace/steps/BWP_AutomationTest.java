@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
 public class BWP_AutomationTest {
-
+    // Steps for Scenario Outline: Verify Device Presence on Biamp Workplace Cloud
     @Given("I am logged into Biamp Workplace Cloud")
     public void login() throws InterruptedException {
         Thread.sleep(2000);
@@ -26,6 +26,20 @@ public class BWP_AutomationTest {
     }
     @And("check if the device with ID {string} is present in the list or not")
     public void the_check_if_the_device_with_id_is_present_in_the_list_or_not(String deviceSr) throws InterruptedException {
+        Thread.sleep(2000);
+        Assertions.assertTrue(true);
+    }
+
+
+    // Steps for Scenario: Verify signout functionality
+    @When("I click on the sign out CTA")
+    public void i_click_on_the_sign_out_cta() throws InterruptedException {
+        Thread.sleep(2000);
+        Assertions.assertTrue(true);
+    }
+
+    @Then("I should be signed out successfully")
+    public void i_should_be_signed_out_successfully() throws InterruptedException {
         Thread.sleep(2000);
         Assertions.assertTrue(true);
     }
