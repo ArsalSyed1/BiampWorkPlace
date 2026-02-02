@@ -22,25 +22,42 @@ public class configUtilities {
     }
 
     public static final String BASE_URL =
-            System.getProperty("baseUrl", properties.getProperty("baseUrl", "https://test.app.com"));
+            System.getProperty("baseUrl", properties.getProperty("baseUrl", "https://stage.workplace.biamp.app"));
 
     public static final String BROWSER_TYPE =
             System.getProperty("browserType", properties.getProperty("browserType", "chrome"));
 
     public static final boolean HEADLESS =
-            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "true")));
+            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "false")));
 
     public static final String USERNAME =
-            System.getProperty("username", properties.getProperty("username", "defaultUser"));
+            System.getProperty("username", properties.getProperty("username", "arsal.syed@biamp.com"));
+
+    /*public static final String PASSWORD =
+            System.getProperty("password", properties.getProperty("password", "defaultPassword"));*/
 
     public static final String PASSWORD =
-            System.getProperty("password", properties.getProperty("password", "defaultPassword"));
+            System.getenv("APP_PASSWORD") != null
+                    ? System.getenv("APP_PASSWORD") // Gets password via GitHub Actions
+                    : System.getProperty("password", // Gets password from Maven/Terminal
+                    properties.getProperty("password")); // Gets password from the IDE Environment Variable
 
     public static final String STORAGE_STATE_PATH =
             System.getProperty("storageStatePath", properties.getProperty("storageStatePath", "biamp/framework/biampworkplace/artifacts/auth.json"));
 
     public static final String SCREENSHOT_PATH =
             System.getProperty("screenshotPath", properties.getProperty("screenshotPath", "biamp/framework/biampworkplace/artifacts/"));
+
+
+    // 3️⃣ Fail-fast validation
+    static {
+        if (PASSWORD == null || PASSWORD.isBlank() || PASSWORD.contains("${")) {
+            throw new IllegalStateException(
+                    "❌ PASSWORD is not configured correctly. " +
+                            "Ensure APP_PASSWORD GitHub secret or -Dpassword is set."
+            );
+        }
+    }
 
 }
 

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestInfo;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static biamp.framework.biampworkplace.utilities.configUtilities.*;
 import static biamp.framework.biampworkplace.utilities.sessionUtilities.reuseSession;
 import static biamp.framework.biampworkplace.utilities.sessionUtilities.saveStorageState;
 
@@ -32,14 +33,14 @@ public class baseTest {
     public static void setup() throws InterruptedException {
 
         playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(HEADLESS));
         context = browser.newContext();
         context.addCookies(List.of(vercelCookie));
         page = context.newPage();
 
         signInPage signInObj = new signInPage(page);
-        signInObj.navigateTo("https://stage.workplace.biamp.app");
-        signInObj.signIn("arsal.syed@biamp.com", "nustseecs@2K13");
+        signInObj.navigateTo(BASE_URL);
+        signInObj.signIn(USERNAME, PASSWORD);
         Thread.sleep(2000);
 
         saveStorageState(context);
@@ -53,7 +54,7 @@ public class baseTest {
     //@BeforeEach
     public void beforeEach() {
         playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(HEADLESS));
         context =reuseSession(browser);
         context.tracing().start(
                 new Tracing.StartOptions()

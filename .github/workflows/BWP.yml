@@ -41,8 +41,9 @@ jobs:
       # 5. Run tests
       - name: Run Playwright tests
         env:
-          CI: true
-        run: mvn clean test -Dtest=TestRunner
+        # This is how to access my secret variable in GitHub
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        run: mvn clean test -Dtest=TestRunner -Dheadless = true
 
       # 🔥 THIS is what keeps your traces
       - name: Upload Playwright traces
