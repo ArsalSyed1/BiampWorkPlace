@@ -2,7 +2,6 @@ package com.framework.playwright.steps;
 
 import com.framework.playwright.base.BaseTest;
 import com.framework.playwright.pages.devicesPage;
-import com.framework.playwright.pages.loginPage;
 import com.framework.playwright.pages.organizationPage;
 import com.framework.playwright.uiComponent.leftNavigation;
 import com.microsoft.playwright.*;
@@ -10,7 +9,6 @@ import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.options.LoadState;
 import org.junit.jupiter.api.*;
 import static com.framework.playwright.utilities.assertionUtils.*;
-import static com.framework.playwright.utilities.auth_sessionUtils.*;
 import static com.microsoft.playwright.options.WaitForSelectorState.VISIBLE;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

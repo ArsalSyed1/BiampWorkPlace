@@ -32,7 +32,7 @@ public class baseTest {
     public static void setup() throws InterruptedException {
 
         playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless());
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
         context = browser.newContext();
         context.addCookies(List.of(vercelCookie));
         page = context.newPage();
