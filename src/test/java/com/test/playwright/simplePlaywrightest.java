@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import java.nio.file.Paths;
 
-public class simplePlaywrightTest {
+public class simplePlaywrightest {
 
     Playwright playwright;
     Browser browser;
