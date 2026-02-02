@@ -43,7 +43,7 @@ jobs:
         env:
         # This is how to access my secret variable in GitHub
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
-        run: mvn clean test -Dtest=TestRunner -Dheadless = true
+        run: mvn clean test -Dtest=TestRunner -Dheadless=true -Dpassword="${APP_PASSWORD}"
 
       # 🔥 THIS is what keeps your traces
       - name: Upload Playwright traces
