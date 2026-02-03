@@ -28,7 +28,7 @@ public class configUtilities {
             System.getProperty("browserType", properties.getProperty("browserType", "chrome"));
 
     public static final boolean HEADLESS =
-            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "false")));
+            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "true")));
 
     public static final String USERNAME =
             System.getProperty("username", properties.getProperty("username", "arsal.syed@biamp.com"));

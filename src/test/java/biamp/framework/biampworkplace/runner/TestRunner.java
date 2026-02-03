@@ -25,3 +25,8 @@ import static io.cucumber.core.options.Constants.*;
 
 public class TestRunner {
 }
+
+
+// To run the test runner class from terminal use the following command:
+// mvn clean test -Dtest=TestRunner OR
+// mvn clean verify -Dtest=TestRunner

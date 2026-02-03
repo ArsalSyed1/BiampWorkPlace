@@ -10,15 +10,21 @@ import java.util.Set;
 
 public class hooks extends baseTest {
 
-    // It is like BeforeAll in JUnit
-    @Before(order = 0) // Cucumber BeforeAll equivalent
+    public static boolean initializedOnce = false;
+    // It is like BeforeAll in JUnit because of the initializedOnce flag
+    @Before(order = 0) // Cucumber BeforeAll equivalent due to initializedOnce flag
     public void setUp() throws InterruptedException {
-        setup();
+        if(!initializedOnce) {
+            setup();
+            initializedOnce = true;
+        }
+
     }
 
     // It is like BeforeEach in JUnit
     @Before // Cucumber BeforeEach equivalent
     public void beforeScenario() {
+
         beforeEach();
     }
 

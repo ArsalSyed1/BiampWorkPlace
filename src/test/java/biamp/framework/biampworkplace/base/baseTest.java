@@ -1,5 +1,6 @@
 package biamp.framework.biampworkplace.base;
 import biamp.framework.biampworkplace.pages.signInPage;
+import biamp.framework.biampworkplace.utilities.configUtilities;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Cookie;
 import com.microsoft.playwright.options.SameSiteAttribute;
@@ -31,9 +32,10 @@ public class baseTest {
 
     //@BeforeAll
     public static void setup() throws InterruptedException {
+        System.out.println("I am printing here the value of Headless: " + HEADLESS);
 
         playwright= Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(HEADLESS));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(configUtilities.HEADLESS));
         context = browser.newContext();
         context.addCookies(List.of(vercelCookie));
         page = context.newPage();
