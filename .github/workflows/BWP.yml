@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     # Running the CI Pipelines inside a Docker Container
     container:
-      image: nustseecs2k13/bwpdockerimage:latest
+      image: arsalsyed1/bwpdockerimage:latest
 
     steps:
       # 1. Checkout repo
