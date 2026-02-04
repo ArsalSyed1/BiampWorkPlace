@@ -38,6 +38,14 @@ jobs:
       - name: Install Playwright dependencies
         run: npx playwright install-deps
 
+     # Debug Container Environment
+      - name: Debug Container Environment
+        run: printenv
+
+     # Verify Docker Image Marker
+      - name: Verify Docker Image Marker
+        run: ls /app || echo "Marker not found"
+
 #      # 5. Run tests
 #      - name: Run Playwright tests
 #        run: mvn verify
