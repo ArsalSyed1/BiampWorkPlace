@@ -6,6 +6,8 @@ import java.util.Properties;
 
 public class configUtilities {
 
+    // Make sure that all methods are defined as static to avoid creating an instance of this class
+
     private static final Properties properties = new Properties();
 
     static {
@@ -28,7 +30,7 @@ public class configUtilities {
             System.getProperty("browserType", properties.getProperty("browserType", "chrome"));
 
     public static final boolean HEADLESS =
-            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "true")));
+            Boolean.parseBoolean(System.getProperty("headless", properties.getProperty("headless", "false")));
 
     public static final String USERNAME =
             System.getProperty("username", properties.getProperty("username", "arsal.syed@biamp.com"));
@@ -38,9 +40,9 @@ public class configUtilities {
 
     public static final String PASSWORD =
             System.getenv("APP_PASSWORD") != null
-                    ? System.getenv("APP_PASSWORD") // Gets password via GitHub Actions
+                    ? System.getenv("APP_PASSWORD") // Gets password via GitHub Actions or Environment Variables or IDE Variables
                     : System.getProperty("password", // Gets password from Maven/Terminal
-                    properties.getProperty("password")); // Gets password from the IDE Environment Variable
+                    properties.getProperty("password")); // Gets password from the configUtilities Variable
 
 //    public static final String PASSWORD =
 //            System.getProperty("password",
@@ -51,10 +53,10 @@ public class configUtilities {
 //            );
 
     public static final String STORAGE_STATE_PATH =
-            System.getProperty("storageStatePath", properties.getProperty("storageStatePath", "biamp/framework/biampworkplace/artifacts/auth.json"));
+            System.getProperty("storageStatePath", properties.getProperty("storageStatePath", "src/test/java/biamp/framework/biampworkplace/artifacts/auth.json"));
 
     public static final String SCREENSHOT_PATH =
-            System.getProperty("screenshotPath", properties.getProperty("screenshotPath", "biamp/framework/biampworkplace/artifacts/"));
+            System.getProperty("screenshotPath", properties.getProperty("screenshotPath", "src/test/java/biamp/framework/biampworkplace/artifacts/"));
 
 
     // 3️⃣ Fail-fast validation

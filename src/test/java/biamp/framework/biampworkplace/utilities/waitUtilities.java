@@ -8,6 +8,9 @@ import com.microsoft.playwright.options.WaitForSelectorState;
 
 public class waitUtilities {
 
+
+    // Make sure to define all methods as static to use them without creating an object in other classes
+
     public static final int DEFAULT_TIMEOUT_MS = 5000;
     private static final int POLL_INTERVAL_MS = 100;
 

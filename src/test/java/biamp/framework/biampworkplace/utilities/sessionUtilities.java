@@ -10,6 +10,9 @@ import static biamp.framework.biampworkplace.utilities.configUtilities.STORAGE_S
 
 public class sessionUtilities {
 
+
+    // Make sure to define all methods as static to use them without creating an object in other classes
+
    // private static final Path STORAGE_STATE_PATH = Paths.get("src/test/java/biamp/framework/biampworkplace/artifacts/auth.json");
 
     public static void saveStorageState(BrowserContext context) {

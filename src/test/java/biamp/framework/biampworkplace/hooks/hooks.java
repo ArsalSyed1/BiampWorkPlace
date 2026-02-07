@@ -15,7 +15,7 @@ public class hooks extends baseTest {
     @Before(order = 0) // Cucumber BeforeAll equivalent due to initializedOnce flag
     public void setUp() throws InterruptedException {
         if(!initializedOnce) {
-            setup();
+         //   setup();
             initializedOnce = true;
         }
 
@@ -24,7 +24,6 @@ public class hooks extends baseTest {
     // It is like BeforeEach in JUnit
     @Before // Cucumber BeforeEach equivalent
     public void beforeScenario() {
-
         beforeEach();
     }
 

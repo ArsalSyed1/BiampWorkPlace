@@ -11,6 +11,8 @@ import static biamp.framework.biampworkplace.utilities.configUtilities.SCREENSHO
 
 public class screenshotUtilities {
 
+    // Make sure to define all methods as static to use them without creating an object in other classes
+
     // Let's define the file paths directly for simplicity
     //private static final String Screenshot_PATH = "biamp/framework/biampworkplace/artifacts/screenshot_" ;
 

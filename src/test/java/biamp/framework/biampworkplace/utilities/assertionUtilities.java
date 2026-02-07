@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class assertionUtilities {
 
+    // Make sure to create all methods as static so that they can be used in other class without creating an object
+
     public static void assertVisible(Locator locator) {
         assertTrue(locator.isVisible(),
                 "Expected element to be visible");

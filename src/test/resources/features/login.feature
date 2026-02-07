@@ -7,9 +7,12 @@ Feature: Biamp Workplace Integration with Project Designer
     When I navigate to the Devices section
     Then I should see a list of registered devices
     And check if the device with ID "<deviceSr>" is present in the list or not
+    And if the device is present with ID "<deviceSr>", then unregister it else do nothing
+    And Trigger PAD Script
     Examples:
       | deviceSr |
-      |237401742 |
+      | device.sr|
+
 
 
   Scenario: Verify signout functionality
