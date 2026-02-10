@@ -10,7 +10,7 @@ import static biamp.framework.biampworkplace.utilities.pageUtilities.*;
 
 public class leftNavBar extends basePage {
 
-    Locator devicesNavLink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Devices"));
+    Locator devicesNavLink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Devices")).first();
 
     public leftNavBar(Page page) {
         super(page);
