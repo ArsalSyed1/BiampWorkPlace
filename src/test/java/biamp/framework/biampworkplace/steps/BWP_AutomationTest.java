@@ -66,6 +66,7 @@ public class BWP_AutomationTest extends baseTest {
     @And("if the device is present with ID {string}, then unregister it else do nothing")
     public void unregisterDevice(String deviceSr) throws InterruptedException {
         devObj.unregisterDevice(deviceSr, count);
+//        Thread.sleep(15000);
     }
 
     @And("Trigger PAD Script")

@@ -8,6 +8,7 @@ import static biamp.framework.biampworkplace.utilities.pageUtilities.*;
 public class signInPage extends basePage {
 
     Locator signInButton = page.getByText("Sign in or Register");
+    Locator loginAccountSelection = page.locator(".lgn-account").first();
     Locator emailField = page.locator("#loginName");
     Locator proceedButton = page.locator("#submit-button");
     Locator passwordField = page.getByPlaceholder("Password");
@@ -18,13 +19,21 @@ public class signInPage extends basePage {
     }
 
 
-    public organizationPage signIn(String email, String password) {
+    public organizationPage signIn(String email, String password) throws InterruptedException {
        if(isVisible(signInButton)) {
            click(signInButton);
-           type(emailField, email);
-           click(proceedButton);
-           type(passwordField, password);
-           click(loginButton);
+           Thread.sleep(5000);
+           if (isVisible(emailField)) {
+               type(emailField, email);
+               click(proceedButton);
+               type(passwordField, password);
+               click(loginButton);
+           } else if (isVisible(loginAccountSelection)) {
+                click(loginAccountSelection);
+//                type(passwordField, password);
+//                click(loginButton);
+               
+           }
 
        } else if (isVisible(organization)) {
            organization.click();

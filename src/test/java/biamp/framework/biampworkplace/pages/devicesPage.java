@@ -31,10 +31,11 @@ public class devicesPage extends basePage {
         }
     }
 
-    public int searchDevice(String deviceSr) {
+    public int searchDevice(String deviceSr) throws InterruptedException {
         click(searchSvg);
         type(searchTextBox, deviceSr);
         waitForLoadState(page, NETWORKIDLE);
+        Thread.sleep(2000);
         return deviceRow.count();
     }
         public void unregisterDevice(String deviceSr, int count) throws InterruptedException {
