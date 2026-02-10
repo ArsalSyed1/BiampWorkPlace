@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted #ubuntu-latest
     # Running the CI Pipelines inside a Docker Container
     container:
       image: arsalsyed1/bwpdockerimage:latest
