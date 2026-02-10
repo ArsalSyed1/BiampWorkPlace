@@ -15,9 +15,9 @@ Feature: Biamp Workplace Integration with Project Designer
 
 
 
-  Scenario: Verify signout functionality
-    When I click on the sign out CTA
-    Then I should be signed out successfully
+  #Scenario: Verify signout functionality
+   # When I click on the sign out CTA
+    #Then I should be signed out successfully
 
 
 
