@@ -3,7 +3,7 @@ package biamp.framework.biampworkplace.pages;
 import biamp.framework.biampworkplace.base.basePage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import static biamp.framework.biampworkplace.utilities.pageUtilities.*;
+import static biamp.framework.biampworkplace.utilities.actionWrapper.*;
 
 public class organizationPage extends basePage {
 

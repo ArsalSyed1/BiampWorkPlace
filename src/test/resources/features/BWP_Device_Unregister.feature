@@ -1,4 +1,4 @@
-Feature: Biamp Workplace Integration with Project Designer
+Feature: BWP Device Unregister
 
   Background:
     Given I am logged into Biamp Workplace Cloud
@@ -11,7 +11,7 @@ Feature: Biamp Workplace Integration with Project Designer
     And Trigger PAD Script
     Examples:
       | deviceSr |
-      | device.sr|
+      | devicesr|
 
 
 

@@ -6,12 +6,12 @@ import com.microsoft.playwright.Page;
 
 import java.nio.file.Paths;
 
-public class pageUtilities {
+public class actionWrapper {
 
     // Need to make all our methods static to be used without creating an object in other classes
 
-    public static void navigateTo(Page page, String url) {
 
+    public static void navigateTo(Page page, String url) {
         page.navigate(url);
     }
 

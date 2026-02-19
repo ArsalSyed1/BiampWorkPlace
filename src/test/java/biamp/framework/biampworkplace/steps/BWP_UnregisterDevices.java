@@ -5,23 +5,18 @@ import biamp.framework.biampworkplace.pages.*;
 import biamp.framework.biampworkplace.uicomponent.leftNavBar;
 
 import biamp.framework.biampworkplace.utilities.configReaderUtilities;
-import com.microsoft.playwright.Locator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-import java.util.Locale;
-
-import static biamp.framework.biampworkplace.base.baseTest.*;
 import static biamp.framework.biampworkplace.utilities.configUtilities.*;
-import static biamp.framework.biampworkplace.utilities.pageUtilities.isVisible;
 import static biamp.framework.biampworkplace.utilities.sessionUtilities.saveStorageState;
 import static biamp.framework.biampworkplace.utilities.waitUtilities.waitForLoadState;
 import static com.microsoft.playwright.options.LoadState.*;
 
-public class BWP_AutomationTest extends baseTest {
+public class BWP_UnregisterDevices extends baseTest {
     signInPage signInObj;
     organizationPage orgObj;
     devicesPage devObj;
@@ -72,8 +67,7 @@ public class BWP_AutomationTest extends baseTest {
     @And("Trigger PAD Script")
     public void triggerPadScript() throws InterruptedException {
         try {
-            String FirstDevice = "237401742";
-            String padScriptUrl = "ms-powerautomate:/console/flow/run?environmentid=Default-f74a8ec6-f77a-4299-8df2-07566aa55e64&workflowid=75e8a905-615d-f011-bec2-7c1e52fce6f6&source=Other&FirstDevice=" + FirstDevice;
+            String padScriptUrl = "ms-powerautomate:/console/flow/run?environmentid=Default-f74a8ec6-f77a-4299-8df2-07566aa55e64&workflowid=75e8a905-615d-f011-bec2-7c1e52fce6f6&source=Other";
             // Use Runtime to execute the custom protocol
             Runtime.getRuntime().exec("cmd /c start \"\" \"" + padScriptUrl + "\"");
             System.out.println("Power Automate Desktop script triggered successfully.");
